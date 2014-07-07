@@ -11,7 +11,7 @@ class CreateCutoffs < ActiveRecord::Migration
 
         t.timestamps
       end
-      add_index :branch_id, :college_id, :unique=>true, :name => "UNIQUE"
+      # add_index :branch_id, :college_id, :unique=>true, :name => "UNIQUE"
   end
 
   def self.down
