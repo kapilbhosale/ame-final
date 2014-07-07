@@ -1,0 +1,128 @@
+<!-- Initialize the plugin: -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.multiselect').multiselect();
+});
+</script>
+
+<div style="float:left; width: 25%; border:1px solid; border-radius:10px; padding:10px 10px 10px 10px; margin-left:10px">
+
+
+	<form action ="/analyze" method="post">
+		<div class="form-group">
+			<label for="inputName">Student Name</label>
+			<input type="text" class="form-control" id="inputName" name="inputName" placeholder="Student Name" value=" <%= @params[:inputName] %>" required>
+			<label for="inputName">Rank obtained and Settings</label>
+		</div>    
+
+		<div class="form-group ">
+			<input type="text" class="col-md-5" id="inputRank" name="inputRank" placeholder="Rank Obtained" required>
+			<input type="text" class="col-md-3" id="below" name="below" placeholder="-below" required>
+			<input type="text" class="col-md-3" id="above"  name="above" placeholder="+Above" required>
+		</div>
+	
+		<center>
+
+		<div class="control-group input-xlarge">
+			<!-- <label class="control-label" for="selectbasic">Caste</label> -->
+			<div class="controls">
+				<select id="selectedCaste" name="selectedCaste" class="input-xlarge">
+					
+					<% @caste.each do |caste| %>
+						<option value="<%= caste %>"> <%= caste %> </option>
+					<% end %>
+
+				</select>
+			</div>
+		</div>
+</center>
+		
+		<div class="form-group">
+            <label class="control-label col-xs-3"><b>Gender: </b></label>
+            <div class="col-xs-2">
+                <label class="radio-inline">
+                    <input type="radio" name="genderRadios" value="male" checked="checked" required="required"> Male
+                </label>
+            </div>
+            <div class="col-xs-2">
+                <label class="radio-inline">
+                    <input type="radio" name="genderRadios" value="female" required="required"> Female
+                </label>
+            </div>
+        </div>
+        
+
+		<div class="form-group">
+			<label for="inputbranch" >Select Branch Preference</label>
+			<select name="BranchesSelected[]" size="10" multiple>
+
+				<% @branches.sort.each do |branch| %>
+				<option value="<%= branch %>"> <%= branch[0..45] %> </option>
+				<% end %>
+
+			</select>
+		</div>
+
+		<div class="form-group">
+			<label for="inputbranch">Select University Preference</label>
+			<select name="UniversitiesSelected[]" size="<%=@universities.count%>" multiple>
+
+				<% @universities.sort.each do |university| %>
+				<option value="<%= university %>"> <%= university[0..45] %> </option>
+				<% end %>
+
+			</select>
+		</div>
+		
+		<%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+			 <i class="icon-ok icon-white"></i> Generate Options
+		<% end %>
+
+		<button type="reset" class="btn btn-danger">Clear</button>
+
+	</form>
+
+<hr>
+	<div style="float:left; width: 100%; padding:0px 10px 10px 10px; margin:0px 10px 10px 10px">
+		<center><h4> <U> Sumarry of Filters </h4> </U> </center> <br>
+		Name : <%= @params[:inputName] %>  <br>
+		Rank : <%= @params[:inputRank] %> 	<br>
+		Caste : <%= @params[:selectedCaste] %> <br>
+		Gender : <%= @params[:genderRadios] %> <br>
+		Branch : <%= @params[:BranchesSelected] %> <br>	
+		Branch : <%= @params[:UniversitiesSelected] %> <br>	
+				
+	</div>
+
+</div>
+
+
+
+
+<div style="float:right; width: 72%; border:1px solid; border-radius:10px; margin-right:10px">
+	<table class="table table-striped table-bordered table-hover">
+		<tr>
+			<th>Sr. No</th>
+			<th>Code </th>
+			<th>College Name </th>
+			<th>Branch </th>
+			<th>Caste </th>
+			<th>Cutoff Rank </th>
+			<th>Cutoff Marks </th>
+		</tr>
+
+		<% @cutoffs.each do |cutoff| %>
+
+		<tr> 
+			<td> <%= cutoff.id %> </td>
+			<td> <%= cutoff.branch_id%> </td>
+			<td> <%= cutoff.college_name %> </td>
+			<td> <%= cutoff.branch_name %> </td>
+			<td> <%= cutoff.cast %> </td>	
+			<td> <%= cutoff.rank_closed %> </td>
+			<td> <%= cutoff.marks_closed %> </td>
+		</tr>
+
+		<% end %>
+	</table>
+</div>
