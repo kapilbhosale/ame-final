@@ -5,6 +5,7 @@ class CreateCutoffs < ActiveRecord::Migration
       	t.string 	:college_name, :null => false
       	t.integer	:branch_id, :null => false
       	t.string	:branch_name, :null => false
+        t.string  :university, :null => false
       	t.string	:cast, :null => false
       	t.integer	:rank_closed, :null => false, :default => 0
       	t.float		:marks_closed, :null => false, :default => 0
