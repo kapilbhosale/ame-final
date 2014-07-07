@@ -1,9 +1,44 @@
 development:
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   reconnect: true
-  database: ME
+  database: d9dlsej8di6s0k
   pool: 5
-  username: fab
-  password: fab2011!
-  host: localhost
+  username: kapgfhxekmmzdl
+  password: nWQiGaC3xbmc3GtUAEYD9tQZF9
+  host: ec2-174-129-218-200.compute-1.amazonaws.com
+  port: 5432
+
+ production:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: true
+  database: d9dlsej8di6s0k
+  pool: 5
+  username: kapgfhxekmmzdl
+  password: nWQiGaC3xbmc3GtUAEYD9tQZF9
+  host: ec2-174-129-218-200.compute-1.amazonaws.com
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: true
+  database: d9dlsej8di6s0k
+  pool: 5
+  username: kapgfhxekmmzdl
+  password: nWQiGaC3xbmc3GtUAEYD9tQZF9
+  host: ec2-174-129-218-200.compute-1.amazonaws.com
+  port: 5432
+
+
+
+
+
+#   Host 	ec2-174-129-218-200.compute-1.amazonaws.com
+# Database 	d9dlsej8di6s0k
+# User 	kapgfhxekmmzdl
+# Port 	5432
+# Password 	Hide nWQiGaC3xbmc3GtUAEYD9tQZF9
+# Psql 	heroku pg:psql --app ame-final aqua
+# URL 	Hide postgres://kapgfhxekmmzdl:nWQiGaC3xbmc3GtUAEYD9tQZF9@ec2-174-129-218-200.compute-1.amazonaws.com:5432/d9dlsej8di6s0k
